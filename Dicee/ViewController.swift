@@ -12,7 +12,9 @@ class ViewController: UIViewController {
     
     var randomDiceeIndex1 : Int  = 0;
     var randomDiceeIndex2 : Int  = 0;
-
+    
+    var diceArray = ["dice1","dice2","dice3","dice4","dice5","dice6"];
+    
     @IBOutlet weak var diceImageView1: UIImageView!
     @IBOutlet weak var diceImageView2: UIImageView!
     
@@ -27,11 +29,15 @@ class ViewController: UIViewController {
     }
 
     @IBAction func btnRollPressed(_ sender: UIButton) {
-        randomDiceeIndex1 = Int(arc4random_uniform(6));
-        randomDiceeIndex2 = Int(arc4random_uniform(6));
+        updateDiceImages();
+    }
+    
+    func updateDiceImages () {
+        randomDiceeIndex1 = Int(arc4random_uniform(5));
+        randomDiceeIndex2 = Int(arc4random_uniform(5));
         
-        print(randomDiceeIndex1);
-        print(randomDiceeIndex2);
+        diceImageView1.image = UIImage(named: diceArray[randomDiceeIndex1]);
+        diceImageView2.image = UIImage(named: diceArray[randomDiceeIndex2]);
     }
 }
 
